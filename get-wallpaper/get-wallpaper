@@ -1,0 +1,32 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          skeleton
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Should-Start:      $portmap
+# Should-Stop:       $portmap
+# X-Start-Before:    nis
+# X-Stop-After:      nis
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# X-Interactive:     true
+# Short-Description: Get Bing background to set it as Gnome wallpaper
+# Description:       Get Bing background to set it as Gnome wallpaper,
+#                    refresh every day.
+### END INIT INFO
+
+case "$1" in
+	start)
+		echo "Starting python"
+		python /home/mewen/dev/scripts/get-background/bing-0.1.py &
+		;;
+	stop)
+		kill $(ps aux | grep -m 1 'python /home/mewen/dev/scripts/get-background/bing-0.1.py' | awk '{ print $2 }')
+		;;
+	*)
+		echo "Usage: service get-background start|stop"
+		exit 1
+		;;
+esac
+exit 0
