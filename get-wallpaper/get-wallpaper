@@ -19,10 +19,10 @@
 case "$1" in
 	start)
 		echo "Starting python"
-		python /home/mewen/dev/scripts/get-background/bing-0.1.py &
+		python /home/mewen/dev/scripts/get-wallpaper/bing-0.1.py &
 		;;
 	stop)
-		kill $(ps aux | grep -m 1 'python /home/mewen/dev/scripts/get-background/bing-0.1.py' | awk '{ print $2 }')
+		kill $(ps aux | grep -m 1 'python /home/mewen/dev/scripts/get-wallpaper/bing-0.1.py' | awk '{ print $2 }')
 		;;
 	*)
 		echo "Usage: service get-background start|stop"
