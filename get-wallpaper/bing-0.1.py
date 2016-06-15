@@ -14,9 +14,10 @@ while True:
 		r = requests.get(url, stream=True) # , params=payload, headers=headers, cookies=cookies, stream=True)
 		if r.status_code == 200:
 			imgUrl = r.content.split("g_img=")[1].split("'")[1] # /something....../imageName.jpg OR http://s.cn.bing.net/something....../imageName.jpg
-
+			print imgUrl
 			if imgUrl[0] is not "/" and imgUrl[0] is not "h":
 				imgUrl = r.content.split("g_img=")[1].split("\"")[1]
+				imgUrl = imgUrl.replace("\/", "/")
 				if imgUrl[0] is not "/" and imgUrl[0] is not "h":
 					print("Error in the img url : {0}".format(r.content.split("g_img=")[1][:100]))
 
