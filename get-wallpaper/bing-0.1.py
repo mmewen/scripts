@@ -5,7 +5,10 @@ import os
 
 url = "http://www.bing.com"
 path = "/home/mewen/Images/Wallpapers/Bing/"
+current = "current"
 ext = ".jpg"
+
+# os.system(". /home/mewen/dev/scripts/get-wallpaper/discover_session_bus_address.sh")
 
 while True:
 	print "Ok, let's go"
@@ -40,9 +43,10 @@ while True:
 				if image.status_code == 200:
 					with open(imgFile, 'wb') as f:
 						shutil.copyfileobj(image.raw, f)
+					os.system("cp " + imgFile + " " + path + current + ext)
 					print "Image correctly downloaded at " + imgFile + " !"
 					# time.sleep(0.2)
-					os.system("gsettings set org.gnome.desktop.background picture-uri file://" + imgFile)
+					# os.system("gsettings set org.gnome.desktop.background picture-uri file://" + imgFile)
 				else:
 					print "Got " + r.status_code + " code from bing, will retry in a minute"
 			else:
