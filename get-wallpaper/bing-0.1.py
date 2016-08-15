@@ -48,7 +48,7 @@ while True:
 					# time.sleep(0.2)
 					# os.system("gsettings set org.gnome.desktop.background picture-uri file://" + imgFile)
 				else:
-					print "Got " + r.status_code + " code from bing, will retry in a minute"
+					print "Got {0} code from bing, will retry in a minute".format(r.status_code)
 			else:
 				print "Image already downloaded"
 		else:
